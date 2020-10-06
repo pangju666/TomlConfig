@@ -1,0 +1,79 @@
+#oes_api配置项
+[oes_api]
+
+#oes配置文件路径
+configFile = "oes_client_sample.conf"
+
+# 超时时间，单位毫秒
+timeout = 2000
+
+# 硬盘号
+customizedDriverId = "6D3F37F4"
+
+#oes_api配置项
+[mds_api]
+
+#mds配置文件路径
+configFile = "mds_client_sample.conf"
+
+# 超时时间，单位毫秒
+timeout = 2000
+
+# 硬盘号
+customizedDriverId = "6D3F37F4"
+
+#行情配置项
+[market]
+
+#行情数据最大存储数量，单位：条
+initSize = 300
+
+#买盘之间与价格比例，单位：百分比
+buyEntryProportion = 100.02
+
+#买盘与卖盘之间的价格比例，单位：百分比
+buyAndSellProportion = 100.02
+
+# 过往行情参考时间，单位：秒
+beforeTime = 60
+
+# 订阅列表，请参考可订阅股票列表文件中的股票代码
+subscribeList = [
+		"123011",
+		"123012",
+		"123013",
+		"123014",
+		"123015",
+		"123017",
+		"123018",
+		"123020",
+		"123022",
+		"123023",
+		"123024",
+		"123025",
+		"123026",
+		"123027",
+		"123028",
+		"123030"
+	]
+
+#交易配置项，价格配置都最高可精确至元后四位，延迟配置单位都为毫秒
+[order]
+
+# 交易差价，用于设置与行情中的价格之间的差价
+priceDifferences = 0.001
+
+# 最大买入价格，单位元
+maxPrice=10000.000
+
+#撤单延迟
+cancelDelay = 50
+
+#买入请求延迟
+buyDelay=1000
+
+#首次卖出请求延迟
+firstSellDelay = 1000
+
+# 卖出请求延迟
+sellDelay = 4000
