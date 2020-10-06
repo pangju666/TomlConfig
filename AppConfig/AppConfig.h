@@ -1,10 +1,8 @@
 ﻿#pragma once
-
 #include "pch.h"
-#include "toml/toml.h"
 
+#include "toml/toml.h"
 #include <string>
-#include <memory>
 
 namespace config {
 	/// 文档配置项，用于获取配置项使用
@@ -26,7 +24,7 @@ namespace config {
 		 *
 		 * @param configFileName 配置文件名称
 		 */
-		AppConfig(const char* configFileName);
+		AppConfig(const char* configFileName = "config.toml");
 
 		/**
 		 * @brief 获取文档副本
@@ -43,7 +41,7 @@ namespace config {
 		 * @since 1.0
 		 * @deprecated
 		 */
-		__declspec(dllexport) void applyChange(const ConfigValue config);
+		void applyChange(const ConfigValue config);
 		
 		/**
 		 * @brief 重置整个文档为默认值
@@ -52,7 +50,7 @@ namespace config {
 		 * @since 1.0
 		 * @deprecated
 		 */
-		__declspec(dllexport) ConfigValue resumeDefault();
+		ConfigValue resumeDefault();
 		
 		/**
 		 * @brief 根据键名来获取配置项
@@ -62,7 +60,7 @@ namespace config {
 		 * @since 1.0
 		 * 
 		 */
-		__declspec(dllexport) ConfigValue getConfig (const char* key) const;
+		ConfigValue getConfig (const char* key) const;
 		
 		/**
 		 * @brief 根据表名和键名来获取配置项
@@ -73,7 +71,7 @@ namespace config {
 		 * @since 1.0
 		 * 
 		 */
-		__declspec(dllexport) ConfigValue getConfig(const char* table, const char* key) const;
+		ConfigValue getConfig(const char* table, const char* key) const;
 		
 		/**
 		 * @brief 下标运算符重载，用于获取文档中的对象值
@@ -83,15 +81,7 @@ namespace config {
 		 * @since 1.0
 		 * 
 		 */
-		__declspec(dllexport) ConfigValue operator[](const char*  key) const;
-
-		/**
-		 * @brief 获取单例对象
-		 *
-		 * @param configFileName 配置文件名称
-		 * @since 1.0
-		 */
-		__declspec(dllexport) static std::shared_ptr<AppConfig> getInstance(const char* configFileName = "config.toml");
+		ConfigValue operator[](const char*  key) const;
 
 	private:
 		/**
@@ -107,7 +97,5 @@ namespace config {
 		toml::value config;
 		/// 配置文件名
 		std::string configFileName;
-		/// 程序配置类单例对象
-		static std::shared_ptr<AppConfig> appConfig;
 	};
 }

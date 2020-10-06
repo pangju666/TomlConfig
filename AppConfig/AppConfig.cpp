@@ -1,13 +1,10 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "AppConfig.h"
 #include <fstream>
 
 using namespace std;
 using namespace toml;
 using namespace config;
-
-// 实例化单例对象
-shared_ptr<AppConfig> AppConfig::appConfig;
 
 AppConfig::AppConfig(const char* configFileName) : configFileName(configFileName)
 {
@@ -52,13 +49,4 @@ void AppConfig::writeToFile()
 	ofstream stream(configFileName, ios::trunc);
 	stream << this->config.as_string();
 	stream.close();
-}
-
-shared_ptr<AppConfig> AppConfig::getInstance(const char* configFileName)
-{
-	if (!appConfig)
-	{
-		appConfig = make_shared<AppConfig>(configFileName);
-	}
-	return appConfig;
 }
