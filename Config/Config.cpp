@@ -23,7 +23,7 @@ ConfigValue Config::get(const char *table, const char *key) const
 
 ConfigValue Config::operator[](const char *key) const
 {
-    return this->getConfig(key);
+    return this->get(key);
 }
 
 void Config::writeToFile()

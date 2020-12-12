@@ -1,5 +1,5 @@
-﻿#ifndef Config_Config_H
-#define Config_Config_H
+﻿#ifndef CONFIG_CONFIG_H
+#define CONFIG_CONFIG_H
 
 #include "toml/toml.h"
 #include <string>
@@ -81,4 +81,5 @@ namespace config {
         std::string configFileName;
     };
 }
+
 #endif
