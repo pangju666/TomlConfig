@@ -1,5 +1,5 @@
-﻿#ifndef APPCONFIG_APPCONFIG_H
-#define APPCONFIG_APPCONFIG_H
+﻿#ifndef Config_Config_H
+#define Config_Config_H
 
 #include "toml/toml.h"
 #include <string>
@@ -16,7 +16,7 @@ namespace config {
      * @version 1.1 2020-8-15 修改底层实现为toml格式文档
      * @since 1.0 2020-7-9
      */
-    class AppConfig
+    class Config
     {
     public:
         /**
@@ -24,7 +24,7 @@ namespace config {
          *
          * @param configFileName 配置文件名称
          */
-        AppConfig(const char *configFileName = "config.toml");
+        Config(const char *configFileName = "config.toml");
 
         /**
          * @brief 获取文档副本
@@ -32,25 +32,7 @@ namespace config {
          * @since 1.0
          * @deprecated
          */
-        inline toml::value getConfig() const { return this->config; }
-
-        /**
-         * @brief 应用对文档的更改
-         *
-         * @param config 新文档
-         * @since 1.0
-         * @deprecated
-         */
-        void applyChange(ConfigValue config);
-
-        /**
-         * @brief 重置整个文档为默认值
-         *
-         * @return 重置后的文档副本
-         * @since 1.0
-         * @deprecated
-         */
-        ConfigValue resumeDefault();
+        inline toml::value clone() const { return this->config; }
 
         /**
          * @brief 根据键名来获取配置项
@@ -60,7 +42,7 @@ namespace config {
          * @since 1.0
          *
          */
-        ConfigValue getConfig(const char *key) const;
+        ConfigValue get(const char *key) const;
 
         /**
          * @brief 根据表名和键名来获取配置项
@@ -71,7 +53,7 @@ namespace config {
          * @since 1.0
          *
          */
-        ConfigValue getConfig(const char *table, const char *key) const;
+        ConfigValue get(const char *table, const char *key) const;
 
         /**
          * @brief 下标运算符重载，用于获取文档中的对象值
@@ -99,5 +81,4 @@ namespace config {
         std::string configFileName;
     };
 }
-
 #endif
