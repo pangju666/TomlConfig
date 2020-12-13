@@ -3,6 +3,7 @@ project(TomlConfig VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_DEBUG_POSTFIX d)
 
 add_subdirectory(toml)
 add_subdirectory(Config)
