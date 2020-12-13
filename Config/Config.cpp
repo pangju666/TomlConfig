@@ -8,7 +8,7 @@ using namespace config;
 Config::Config(const char *configFileName) : configFileName(configFileName)
 {
     // 从文件中读取配置文档
-    this->config = parse(configFileName);
+    this->config = parse(std::string(configFileName));
 }
 
 ConfigValue Config::get(const char *key) const
