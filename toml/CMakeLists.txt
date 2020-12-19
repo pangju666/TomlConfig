@@ -1,4 +1,4 @@
-file(GLOB headers *.hpp)
+file(GLOB headers *.hpp *.h)
 
 add_library(toml INTERFACE)
 target_include_directories(toml
